@@ -2,6 +2,7 @@
 
 import memoizeOne from 'memoize-one';
 import { createElement, PureComponent } from 'react';
+import Scroll from '@togedo/scroll';
 
 export type ScrollToAlign = 'auto' | 'center' | 'start' | 'end';
 
@@ -270,20 +271,13 @@ export default function createListComponent({
       );
 
       return createElement(
-        ((outerTagName: any): string),
+        Scroll,
         {
-          className,
+          contentStyle: { height: '100%' },
+          right: true,
+          autoHide: true,
           onScroll,
-          ref: this._outerRefSetter,
-          style: {
-            position: 'relative',
-            height,
-            width,
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            willChange: 'transform',
-            ...style,
-          },
+          className,
         },
         createElement(((innerTagName: any): string), {
           children: items,
