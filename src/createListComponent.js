@@ -52,6 +52,7 @@ export type Props<T> = {|
   outerRef?: any,
   outerTagName?: string,
   overscanCount: number,
+  scrollProps?: Object,
   style?: Object,
   useIsScrolling: boolean,
   width: number | string,
@@ -278,6 +279,8 @@ export default function createListComponent({
           autoHide: true,
           onScroll,
           className,
+          showOnHover: true,
+          ...this.props.scrollProps,
         },
         createElement(((innerTagName: any): string), {
           children: items,
